@@ -1,5 +1,45 @@
 # NetPractice Notes
 
+
+
+
+
+
+
+
+
+
+Here is a list of the most common IPv4 subnet masks, their CIDR notation, and how many devices (hosts) they can support.
+
+### Common IPv4 Subnet Mask Ranges
+
+| Subnet Mask | CIDR Prefix | Usable Hosts | Common Use Case |
+| :--- | :--- | :--- | :--- |
+| **`255.0.0.0`** | `/8` | 16,777,214 | Very large corporate or ISP networks (e.g., the `10.0.0.0/8` private range). |
+| **`255.255.0.0`** | `/16` | 65,534 | Large to medium-sized corporate or university networks. |
+| **`255.255.240.0`** | `/20` | 4,094 | Medium-sized networks, often a block assigned to a company. |
+| **`255.255.255.0`** | `/24` | 254 | **The most common mask.** Perfect for small office or home networks. |
+| **`255.255.255.128`**| `/25` | 126 | Dividing a `/24` network into two smaller subnets. |
+| **`255.255.255.192`**| `/26` | 62 | Creating four smaller networks from a `/24`, good for department separation. |
+| **`255.255.255.224`**| `/27` | 30 | Smaller subnets for specific server groups or labs (like in your exercise). |
+| **`255.255.255.240`**| `/28` | 14 | Small networks, often for a specific application or service. |
+| **`255.255.255.248`**| `/29` | 6 | Very small networks, often used for the link between routers. |
+| **`255.255.255.252`**| `/30` | 2 | **Point-to-Point links.** The most common choice for connecting exactly two devices, usually two routers. |
+| **`255.255.255.254`**| `/31` | 2 | A special case for point-to-point links that conserves IP addresses (less common but very efficient). |
+| **`255.255.255.255`**| `/32` | 1 | Represents a single, specific host. Often used in routing tables or firewall rules to identify one computer. |
+
+**Key takeaway:** As the CIDR number (`/x`) gets bigger, the number of usable hosts gets smaller because more bits are being used for the network portion of the address. Noting down the `/24`, `/27`, and `/30` masks will be especially helpful for your NetPractice project.
+
+
+
+
+
+
+
+
+
+
+---
 Here are the most important reserved IPv4 address ranges you should not use for assigning to regular hosts on a public network:
 
 ### 1. Private Network Addresses
