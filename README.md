@@ -71,3 +71,55 @@ IANA has reserved specific blocks of addresses to be used in examples and docume
 ### What is the key difference between a switch and a router?
 
 **Switch** can connects your all local hosts together to communicate with each other while the **Router** opens up doors to connect to other hosts in other neighborhoods (subnet masks)
+
+---
+---
+
+### The One Universal Method That Always Works: The Binary Method
+
+The one single method that never changes is based on counting the `1`s and `0`s in the subnet mask's binary code.
+
+Let's break down the two things you want to calculate:
+1.  The **Number of Available Hosts**.
+2.  The **Network Ranges** (the "blocks" or "neighborhoods").
+
+#### **1. How to Calculate the NUMBER OF HOSTS (Your First Method Was Correct!)**
+
+Your original method was the **correct and universal way** to find the number of hosts. It never changes.
+
+* **Step 1:** Convert the entire subnet mask to its 32-bit binary form.
+* **Step 2:** Count the total number of zeros (`n`).
+* **Step 3:** The number of usable hosts is **always** $2^n - 2$.
+
+Let's test this on all our examples:
+* **`255.255.255.192`**: `...11000000`. Has **6 zeros**.
+  * Usable Hosts = $2^6 - 2 = 64 - 2 = 62$.
+* **`255.255.255.224`**: `...11100000`. Has **5 zeros**.
+  * Usable Hosts = $2^5 - 2 = 32 - 2 = 30$.
+* **`255.255.192.0`**: `...11000000.00000000`. Has **14 zeros** (6 in the 3rd block + 8 in the 4th).
+  * Usable Hosts = $2^{14} - 2 = 16384 - 2 = 16382$.
+
+This method is universal. It always works for finding the host count.
+
+#### **2. How to Calculate the NETWORK RANGES (The "Magic Number" Shortcut)**
+
+Now, let's talk about the `256 - x` calculation.
+
+**This method is NOT for finding the number of hosts.** This is a shortcut to find the **block size** of your networks, which helps you find the starting and ending addresses of each range.
+
+* **Step 1:** Find the "interesting octet" (the first one that isn't `255`).
+* **Step 2:** Calculate the block size: `256 - interesting_number`.
+* **Step 3:** List the multiples of that block size to find the start of each network.
+
+**Why did this seem like a way to find the number of hosts?**
+Because when the interesting octet is the **last one**, the block size (`32`) is very close to the number of usable hosts (`30`). The block size is the total addresses in the block ($2^n$), and the usable hosts is that number minus 2.
+
+### The Single, Unified Workflow
+
+So, here is the one proper way to think about it, which combines both ideas:
+
+1.  **To find the number of hosts:** Use your original binary method. Convert the mask, count the total zeros (`n`), and calculate $2^n - 2$. This is the only way.
+
+2.  **To find the specific IP ranges:** Use the "magic number" shortcut. Find the interesting octet, calculate `256 - x` to get the block size, and then map out your networks (`.0, .32, .64, etc.`).
+
+You were not wrong. Your first method was the correct one for the question you were asking ("how many hosts?"). The "magic number" method answers a different question ("where do my network ranges start?"). I apologize for not making that distinction clearer earlier.
