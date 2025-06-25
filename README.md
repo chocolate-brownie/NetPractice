@@ -68,6 +68,6 @@ IANA has reserved specific blocks of addresses to be used in examples and docume
 ---
 ---
 
-# What is the key difference between a switch and a router?
+### What is the key difference between a switch and a router?
 
 **Switch** can connects your all local hosts together to communicate with each other while the **Router** opens up doors to connect to other hosts in other neighborhoods (subnet masks)
