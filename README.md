@@ -1,14 +1,5 @@
 # NetPractice Notes
 
-
-
-
-
-
-
-
-
-
 Here is a list of the most common IPv4 subnet masks, their CIDR notation, and how many devices (hosts) they can support.
 
 ### Common IPv4 Subnet Mask Ranges
@@ -30,16 +21,9 @@ Here is a list of the most common IPv4 subnet masks, their CIDR notation, and ho
 
 **Key takeaway:** As the CIDR number (`/x`) gets bigger, the number of usable hosts gets smaller because more bits are being used for the network portion of the address. Noting down the `/24`, `/27`, and `/30` masks will be especially helpful for your NetPractice project.
 
-
-
-
-
-
-
-
-
-
 ---
+---
+
 Here are the most important reserved IPv4 address ranges you should not use for assigning to regular hosts on a public network:
 
 ### 1. Private Network Addresses
@@ -80,3 +64,10 @@ IANA has reserved specific blocks of addresses to be used in examples and docume
 * **Carrier-Grade NAT (`100.64.0.0/10`):** Used by internet service providers when they run out of public IP addresses and need to share them among many customers.
 * **Reserved for Future Use (`240.0.0.0/4`):** This block is set aside for potential future applications.
 * **Limited Broadcast (`255.255.255.255`):** A special broadcast address for the local network segment.
+
+---
+---
+
+What is the key difference between a switch and a router?
+
+**Switch** can connects your all local hosts together to communicate with each other while the **Router** opens up doors to connect to other hosts in other neighborhoods (subnet masks)
