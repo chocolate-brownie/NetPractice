@@ -165,3 +165,45 @@ It uses a process called **Address Resolution Protocol (ARP)**.
 Once the router receives the packet, its job begins. It "unwraps" the envelope, looks at the packet's final destination (`8.8.8.8`), checks its own massive routing table (its map of the internet), and forwards the packet on its next hop toward Google.
 
 This entire process is why the gateway **must** be local. If you set the gateway to a remote IP, your computer's ARP "shout" for that remote IP would go unanswered on the local network, and it would never be able to send the packet.
+
+---
+---
+
+Here is how to generate that Network Address.
+
+***
+
+### **Simple Note: How to Find a Network Address**
+
+**Goal:** To find the starting address (the Network Address) of the subnet that a specific computer belongs to.
+
+**What You Need:**
+1.  The computer's IP Address: `92.181.11.227`
+2.  The computer's Subnet Mask: `255.255.255.128`
+
+#### **Step 1: Find the "Magic Number" from the Subnet Mask.**
+Look at the part of the mask that is not `255`. In this case, it is `.128`.
+
+Subtract this number from 256.
+`256 - 128 = 128`
+The Magic Number (or block size) is **128**.
+
+#### **Step 2: List the starting points of the network blocks.**
+The blocks will be multiples of the magic number (128). The possible starting points are:
+* `0`
+* `128`
+
+#### **Step 3: Find which block your computer's IP lives in.**
+Look at the last number of your computer's IP address, which is `.227`.
+
+Ask the question: "Which block does `227` fall into?"
+* Is it between 0 and 127? No.
+* Is it between 128 and 255? **Yes.**
+
+This means your computer lives in the network block that starts at `128`.
+
+#### **Result:**
+The starting number of the block is the Network Address.
+
+* The Network Address is: **`92.181.11.128`**
+* We add the CIDR mask (`/25`) to describe the size of the network fully: **`92.181.11.128/25`**
