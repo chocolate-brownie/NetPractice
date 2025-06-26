@@ -169,10 +169,6 @@ This entire process is why the gateway **must** be local. If you set the gateway
 ---
 ---
 
-Here is how to generate that Network Address.
-
-***
-
 ### **Simple Note: How to Find a Network Address**
 
 **Goal:** To find the starting address (the Network Address) of the subnet that a specific computer belongs to.
