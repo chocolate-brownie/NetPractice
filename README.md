@@ -203,3 +203,33 @@ The starting number of the block is the Network Address.
 
 * The Network Address is: **`92.181.11.128`**
 * We add the CIDR mask (`/25`) to describe the size of the network fully: **`92.181.11.128/25`**
+
+---
+---
+You cannot determine the specific subnet mask by looking at an IP address alone.
+
+In modern networking, the IP address and the subnet mask are two separate pieces of information that are required to define a host's location on a network. An IP address like `119.198.14.1` could have a subnet mask of `/24`, `/25`, or any other valid mask. The mask must be provided with the IP address.
+
+---
+
+### Historical "Classful" Networking
+
+However, your question relates to an older, now obsolete system called **classful networking**. In this system, the subnet mask was *implied* by the first number of the IP address. Although this is not used anymore, it's helpful to know for context.
+
+* **Class A:** If the first number is between **1 and 126**.
+    * The default subnet mask was **`255.0.0.0`** (`/8`).
+
+* **Class B:** If the first number is between **128 and 191**.
+    * The default subnet mask was **`255.255.0.0`** (`/16`).
+
+* **Class C:** If the first number is between **192 and 223**.
+    * The default subnet mask was **`255.255.255.0`** (`/24`).
+
+### Applying This to Your Example
+
+For your IP address, `119.198.14.1`:
+1.  The first number is **119**.
+2.  `119` falls into the **Class A** range.
+3.  Therefore, in the old classful system, its implied subnet mask would have been **`255.0.0.0`**.
+
+**Important Note:** This classful system is no longer in use. All modern networking uses **Classless Inter-Domain Routing (CIDR)**, where the subnet mask (e.g., `/25`) is always explicitly stated with the IP address.
