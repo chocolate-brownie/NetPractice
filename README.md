@@ -206,11 +206,9 @@ The starting number of the block is the Network Address.
 
 ---
 ---
-You cannot determine the specific subnet mask by looking at an IP address alone.
+### You cannot determine the specific subnet mask by looking at an IP address alone.
 
 In modern networking, the IP address and the subnet mask are two separate pieces of information that are required to define a host's location on a network. An IP address like `119.198.14.1` could have a subnet mask of `/24`, `/25`, or any other valid mask. The mask must be provided with the IP address.
-
----
 
 ### Historical "Classful" Networking
 
